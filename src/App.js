@@ -18,6 +18,7 @@ class App extends Component {
 
   onSubmit = (event) => {
     event.preventDefault(); //this prevents the default behaviour of "onSubmit" - refreshing the page
+    if (this.state.inputbartext.length === 0) {return} ;   
     const newItem = { id: Date.now(), item: this.state.inputbartext };
 
     this.setState({
