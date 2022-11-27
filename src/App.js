@@ -20,19 +20,17 @@ class App extends Component {
     event.preventDefault(); //this prevents the default behaviour of "onSubmit" - refreshing the page
     if (this.state.inputbartext.length === 0) {return} ;   
     const newItem = { id: Date.now(), item: this.state.inputbartext };
-
-    this.setState({
-      listofitems: this.state.listofitems.concat(newItem),
+    this.setState(prevstate => ({
+      listofitems: prevstate.listofitems.concat(newItem),
       inputbartext: "",
-    });
-    console.log(this.state.listofitems);
+    }));
   };
 
   onDelete = (key) => {
-    const deletedArray = this.state.listofitems.filter(item => item.id !== key)
-    const undoArray = this.state.listofitems.filter(item => item.id === key)
-     this.setState({listofitems: deletedArray, undolist: this.state.undolist.concat(undoArray)})
-     console.log("undo",undoArray)
+    const deletedArray = this.state.listofitems.filter(item => item.id !== key);
+    const undoArray = this.state.listofitems.filter(item => item.id === key);
+     this.setState(prevstate => ({listofitems: deletedArray, undolist: prevstate.undolist.concat(undoArray)}));
+     console.log(this.state.undolist);
   }
 
   render() {
