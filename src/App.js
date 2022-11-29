@@ -7,9 +7,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputbartext: "",
+      inputbartext: '',
       listofitems: [],
-      selectedItemDone: "",
     };
   }
 
@@ -32,8 +31,9 @@ class App extends Component {
      this.setState({listofitems: deletedArray,});
   }
 
-  handleComplete = () => {
-    
+  handleDone = (event) => {
+    event.preventDefault();
+    event.target.className === ''? event.target.className = "toDoListDone" : event.target.className = ""
   }
 
   render() {
@@ -46,7 +46,7 @@ class App extends Component {
           handleChange={this.handleChange}
           onSubmit={this.onSubmit}
         />
-        <ListItems listofitems={this.state.listofitems} onDelete = {this.onDelete} handleComplete = {this.handleComplete}/>
+        <ListItems listofitems={this.state.listofitems} onDelete = {this.onDelete} handleDone = {this.handleDone}/>
       </div>
     );
   }
