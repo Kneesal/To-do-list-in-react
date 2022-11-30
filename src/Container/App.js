@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import InputBar from "./InputBar";
-import ListItems from "./ListItems";
+import InputBar from "../Components/InputBar";
+import ListItems from "../Components/ListItems";
 
 
 class App extends Component {
